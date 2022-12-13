@@ -26,11 +26,8 @@
    ================================================== -->
 	<!-- <script src="js/modernizr.js"></script> -->
 
-	<!-- Favicons
-	================================================== -->
-	<link rel="shortcut icon" href="favicon.ico">
-
 	<?php wp_head(); ?>
+
 </head>
 
 <body>
@@ -42,11 +39,10 @@
 		<div class="row">
 
 			<div class="twelve columns">
-				<div>
-					<?php bloginfo('Sparrow'); ?>
-				</div>
 				<div class="logo">
-					<a href="index.html"><img alt="" src="images/logo.png"></a>
+					<a href="<?php echo home_url(); ?>">
+						<?php bloginfo('Sparrow'); ?>
+					</a>
 				</div>
 
 				<nav id="nav-wrap">
@@ -55,6 +51,7 @@
 
 					<?php wp_nav_menu(
                     	array(
+							'theme_location' => 'header_menu',
                     		'menu' => 'nav',
                     		'menu_class' => 'nav',
                     		'menu_id' => 'nav',

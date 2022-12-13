@@ -3,14 +3,26 @@
 	<div class="row">
 
 		<div class="twelve columns">
-			<ul class="footer-nav">
+			<?php wp_nav_menu(
+			array(
+			'theme_location' => 'footer_menu',
+			'menu' => null,
+			'container' => 'div',
+			'container_class' => 'footer-nav',
+			'container_id' => '',
+			'menu_class' => 'menu',
+			'menu_id' => '',
+			'fallback_cb' => 'wp_page_menu',))
+		?>
+
+			<!-- <ul class="footer-nav">
 				<li><a href="index.html">Home.</a></li>
 				<li><a href="blog.html">Blog.</a></li>
 				<li><a href="portfolio-index.html">Portfolio.</a></li>
 				<li><a href="about.html">About.</a></li>
 				<li><a href="contact.html">Contact.</a></li>
 				<li><a href="styles.html">Features.</a></li>
-			</ul>
+			</ul> -->
 
 			<ul class="footer-social">
 				<li><a href="#"><i class="fa fa-facebook"></i></a></li>
@@ -32,19 +44,8 @@
 
 	</div>
 
-</footer> <!-- Footer End-->
+	<?php wp_footer(); ?>
 
-<!-- Java Script
-   ================================================== -->
-<!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="js/jquery-1.10.2.min.js"><\/script>')</script>
-<script type="text/javascript" src="js/jquery-migrate-1.2.1.min.js"></script>
+	</body>
 
-<script src="js/jquery.flexslider.js"></script>
-<script src="js/doubletaptogo.js"></script>
-<script src="js/init.js"></script> -->
-
-<?php wp_footer(); ?>
-</body>
-
-</html>
+	</html>
