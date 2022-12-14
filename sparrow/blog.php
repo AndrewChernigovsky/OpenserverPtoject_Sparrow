@@ -1,3 +1,10 @@
+<?php
+/*
+Template Name: Blog
+*/
+?>
+
+
 <?php get_header('page'); ?>
 <!-- Page Title
    ================================================== -->
@@ -6,7 +13,7 @@
 	<div class="row">
 
 		<div class="ten columns centered text-center">
-			<h1>Our Blog<span>.</span></h1>
+			<h1>Mine Blog<span>.</span></h1>
 
 			<p>Aenean condimentum, lacus sit amet luctus lobortis, dolores et quas molestias excepturi
 				enim tellus ultrices elit, amet consequat enim elit noneas sit amet luctu. </p>

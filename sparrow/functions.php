@@ -1,12 +1,12 @@
 <?php
-
+// Перехват хуков и вызывание функций
 add_action('wp_enqueue_scripts', 'styles_add');
 add_action('wp_footer', 'scripts_add');
 add_action('after_setup_theme', 'theme_register_nav_menu');
+add_action('widgets_init', 'register_my_widgets');
 
 // Подключение фильтров
-
-add_filter('nav_menu_css_class', 'special_nav_class', 10, 2);
+// add_filter('nav_menu_css_class', 'special_nav_class', 10, 2);
 
 // Функции
 
@@ -33,16 +33,44 @@ function scripts_add()
 // Подключение меню
 function theme_register_nav_menu()
 {
-	register_nav_menu( 'header_menu', 'Меню шапки');
-	register_nav_menu( 'footer_menu', 'Меню подвала');
-
+	register_nav_menu('header_menu', 'Меню шапки');
+	register_nav_menu('header_inside', 'Меню шапки внутренних страниц');
+	// register_nav_menu('footer_menu', 'Меню подвала');
 }
 
-// Замена класса элемента меню
-function special_nav_class($classes, $item)
+// // Замена класса элемента меню
+// function special_nav_class($classes, $item)
+// {
+// 	if (in_array('current-menu-item', $classes)) {
+// 		$classes[] = 'current ';
+// 	}
+// 	return $classes;
+// }
+
+// регистрация виджетов в сайдбар
+function register_my_widgets()
 {
-	if (in_array('current-menu-item', $classes)) {
-		$classes[] = 'current ';
-	}
-	return $classes;
+
+	register_sidebar(
+		array(
+			'name' => 'left-sidebar',
+			'id' => 'left_sidebar',
+			'description' => 'Описание сайдбара',
+			'before_widget' => '<div id="left-side" class="widget %2$s">',
+			'after_widget' => "</div>\n",
+			'before_title' => '<h5 class="widgettitle">',
+			'after_title' => "</h5>\n"
+		)
+	);
+	register_sidebar(
+		array(
+			'name' => 'top-sidebar',
+			'id' => 'top_sidebar',
+			'description' => 'Верхний сайдбар',
+			'before_widget' => '<div id="top-side" class="widget %2$s">',
+			'after_widget' => "</div>\n",
+			'before_title' => '<h5 class="widgettitle">',
+			'after_title' => "</h5>\n"
+		)
+	);
 }
