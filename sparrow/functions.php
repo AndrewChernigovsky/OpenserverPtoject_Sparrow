@@ -35,17 +35,19 @@ function theme_register_nav_menu()
 {
 	register_nav_menu('header_menu', 'Меню шапки');
 	register_nav_menu('header_inside', 'Меню шапки внутренних страниц');
-	// register_nav_menu('footer_menu', 'Меню подвала');
-}
+	register_nav_menu('footer_menu', 'Меню подвала');
+	add_theme_support('title-tag');
+	add_theme_support('post-thumbnails', array('post'));
+	add_image_size('post_thumb', 800, 500, true);
 
-// // Замена класса элемента меню
-// function special_nav_class($classes, $item)
-// {
-// 	if (in_array('current-menu-item', $classes)) {
-// 		$classes[] = 'current ';
-// 	}
-// 	return $classes;
-// }
+	add_filter('excerpt_more', 'new_excerpt_more');
+	function new_excerpt_more($more)
+	{
+		global $post;
+		return '<a href="' . get_permalink($post) . '"> Читать дальше...</a>';
+	}
+
+}
 
 // регистрация виджетов в сайдбар
 function register_my_widgets()
@@ -73,4 +75,10 @@ function register_my_widgets()
 			'after_title' => "</h5>\n"
 		)
 	);
+}
+
+add_action('admin_menu', 'all_settings_link');
+function all_settings_link()
+{
+	add_options_page(__('All Settings'), __('All Settings'), 'manage_options', 'options.php?foo');
 }

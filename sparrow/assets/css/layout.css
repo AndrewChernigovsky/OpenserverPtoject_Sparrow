@@ -717,6 +717,7 @@ ul#nav ul li a {
 #journal .entry .post-content {  padding-right: 16.66667%; }
 #journal .entry .post-content p {
    font: 16px/30px notosans-regular, sans-serif;
+   word-break: break-all;
 }
 #journal .entry .post-content a.more-link {
    font: 16px/30px notosans-bold, sans-serif;
